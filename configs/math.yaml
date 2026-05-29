@@ -1,0 +1,9 @@
+task: math
+dataset:
+  hf_name: hendrycks/competition_math
+  hf_test_name: HuggingFaceH4/MATH-500
+  split_seed: 0
+reward: em
+retrieval: null
+protocols: [SOLO, SELF_REFLECT, VERIFY, DEBATE_2, PROPOSE_VERIFY]
+prompt_style: math

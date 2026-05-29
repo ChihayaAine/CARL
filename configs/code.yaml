@@ -1,0 +1,11 @@
+task: code
+dataset:
+  hf_name: princeton-nlp/SWE-bench_Lite
+  split_seed: 0
+reward: resolved
+retrieval: bm25
+bm25_top_k: 5
+protocols: [SOLO, SELF_REFLECT, VERIFY, DEBATE_2, PROPOSE_VERIFY]
+prompt_style: code
+use_real_harness: false
+harness_timeout_seconds: 900

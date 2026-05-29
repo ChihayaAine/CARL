@@ -1,0 +1,9 @@
+task: qa
+dataset:
+  hf_name_musique: dgslibisey/MuSiQue
+  hf_name_2wiki: voidful/2WikiMultihopQA
+  split_seed: 0
+reward: f1
+retrieval: passages
+protocols: [SOLO, SELF_REFLECT, VERIFY, DEBATE_2, PROPOSE_VERIFY]
+prompt_style: qa

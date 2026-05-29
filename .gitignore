@@ -1,0 +1,36 @@
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.eggs/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+build/
+dist/
+
+.env
+.venv/
+venv/
+env/
+
+# Local data, logs, checkpoints, tables
+data/
+!carl/data/
+logs/
+runs/
+checkpoints/
+tables/
+*.parquet
+*.npz
+*.pkl
+*.ckpt
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Third-party clones we may pull in temporarily as references
+_thirdparty/

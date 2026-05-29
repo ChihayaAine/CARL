@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "carl"
+version = "0.1.0"
+description = "Causal Advantage Routing for Language agents"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Apache-2.0" }
+dependencies = [
+    "numpy>=1.23",
+    "scipy>=1.10",
+    "scikit-learn>=1.2",
+    "pandas>=2.0",
+    "pyyaml>=6.0",
+    "tqdm>=4.65",
+    "rank-bm25>=0.2.2",
+    "requests>=2.31",
+    "datasets>=2.14",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+encoder = ["sentence-transformers>=2.2"]
+torch = ["torch>=2.0"]
+swe = ["swebench>=2.0"]
+dev = ["pytest>=7.0", "ruff>=0.1"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["carl*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

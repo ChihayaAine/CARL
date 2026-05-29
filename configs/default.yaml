@@ -1,0 +1,51 @@
+# CARL default hyperparameters. All values are taken from the paper
+# (Methodology + Appendix D Training and Hyperparameter Details).
+
+# Cost-aware utility coefficients (Eq. 1).
+lambda: 0.05
+mu: 0.02
+
+# Behavior policy and propensity handling.
+eps_probe: 0.15        # randomized probe fraction
+b_min: 0.02            # behavior-policy floor on every (x, k)
+e_min: 0.02            # propensity clip in DR scores
+
+# Cross-fitting and bootstrap.
+n_folds: 5             # cross-fitted nuisances
+n_boot: 5              # bootstrap ensemble size for sigma
+
+# Shrinkage of DR scores towards the direct contrast (Eq. 6-7).
+K_NN: 50               # kNN neighbourhood for effective sample size
+gamma: 0.5             # shrinkage scale
+
+# Calibration / LCB (Eq. 8-9).
+delta: 0.10            # miscoverage
+kappa: 1.0             # LCB risk knob
+
+# Optimisation.
+lr: 0.0002
+weight_decay: 0.01
+batch_size: 256
+max_epochs: 40
+patience: 5
+mlp_hidden: 256
+shared_hidden: 512
+dropout: 0.1
+
+# Encoder configuration.
+encoder:
+  kind: sbert                              # one of {sbert, mock, llm}
+  name: sentence-transformers/all-MiniLM-L6-v2
+  dim: 384
+
+# Reference budgets for normalizing token and latency costs.
+reference_budgets:
+  math: { tokens: 2000,  latency_seconds: 30  }
+  qa:   { tokens: 3000,  latency_seconds: 30  }
+  code: { tokens: 20000, latency_seconds: 120 }
+
+# Per-task split sizes from Table 3.
+splits:
+  math: { train: 5000, val: 1000, calib: 1500, test: 500,  full_matrix: 500  }
+  qa:   { train: 8000, val: 1000, calib: 1500, test: 1000, full_matrix: 1000 }
+  code: { train: 500,  val: 100,  calib: 300,  test: 300,  full_matrix: 100  }
